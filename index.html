@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidSpark - Learning is Fun</title>
+    <!-- icon -->
+    <link rel="icon" href="./assets/images/kidspark icon.ico" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hover-effect:hover:not(.logo-section) {
+            transform: scale(1.05);
+        }
+        .hover-effect img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen">
+    <div class="grid grid-cols-2 gap-4 w-full h-full p-4">
+        <!-- Logo Section -->
+        <div class="col-span-1 flex flex-col items-center justify-center bg-gray-800 text-white p-8 hover-effect transition-transform duration-300 ease-in-out">
+            <img src="./assets/images/Kidspark alpha logo.png" alt="KidSpark Logo" class="mb-4">
+        </div>
+        <!-- Content Sections -->
+        <div class="col-span-1 grid grid-cols-2 grid-rows-3 gap-4">
+            <!-- Short Stories -->
+            <div class="bg-orange-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">Short stories</p>
+                <img src="./assets/images/benny the rabbit.png" alt="Character" class="absolute top-2 right-2" width="100" height="100">
+            </div>
+            <!-- Virtual Reality -->
+            <div class="bg-green-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">Virtual Reality</p>
+                <img src="./assets/images/ballon girl.png" alt="Character" class="absolute top-2 right-2" width="150" height="150">
+            </div>
+            <!-- Coloring Books-->
+            <div class="bg-gray-800 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">Coloring books</p>
+                <img src="./assets/images/boy waving.png" alt="Character" class="absolute bottom-2 left-2" width="90" height="80">
+            </div>
+            <!-- Cut-out Activities -->
+            <div class="bg-orange-700 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">Cut-out Activities</p>
+                <img src="./assets/images/cute elephant.png" alt="Character" class="absolute bottom-2 right-2" width="120" height="90">
+            </div>
+            <!-- Brain Games -->
+            <div class="bg-yellow-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">Brain Games</p>
+                <img src="./assets/images/peace girl.png" alt="Character" class="absolute bottom-2 right-2" width="130" height="160">
+            </div>
+            <!-- More Coming Soon -->
+            <div class="bg-purple-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+                <p class="text-white text-2xl">More coming soon!!!</p>
+                <img src="./assets/images/Kidspark logo 2 (1).png" alt="Character" class="absolute top-2 right-2" width="100" height="100">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('background.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 48px;
+    color: #00796b;
+}
+
+.game-container {
+    margin-top: 20px;
+}
+
+#letter {
+    font-size: 150px;
+    margin-bottom: 20px;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+#letter.animate {
+    transform: scale(1.2);
+    opacity: 0.5;
+}
+
+#input {
+    padding: 20px;
+    font-size: 28px;
+    margin-bottom: 10px;
+    border: 3px solid #00796b;
+    border-radius: 5px;
+}
+
+#checkButton {
+    padding: 20px 40px;
+    font-size: 24px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#checkButton:hover {
+    background-color: #004d40;
+}
+
+#checkButton.bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #00796b;
+}
