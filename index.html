@@ -8,53 +8,108 @@
     <link rel="icon" href="./assets/images/kidspark icon.ico" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        .hover-effect:hover:not(.logo-section) {
+        .hover-effect:hover {
             transform: scale(1.05);
         }
         .hover-effect img:hover {
             transform: scale(1.1);
         }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+        }
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
     </style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center h-screen">
-    <div class="grid grid-cols-2 gap-4 w-full h-full p-4">
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full h-full">
         <!-- Logo Section -->
-        <div class="col-span-1 flex flex-col items-center justify-center bg-gray-800 text-white p-8 hover-effect transition-transform duration-300 ease-in-out">
+        <div class="flex flex-col items-center justify-center bg-gray-800 text-white p-8">
             <img src="./assets/images/Kidspark alpha logo.png" alt="KidSpark Logo" class="mb-4">
         </div>
         <!-- Content Sections -->
-        <div class="col-span-1 grid grid-cols-2 grid-rows-3 gap-4">
+        <div class="grid grid-cols-2 grid-rows-3 gap-4">
             <!-- Short Stories -->
-            <div class="bg-orange-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <div class="bg-orange-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Short stories</p>
                 <img src="./assets/images/benny the rabbit.png" alt="Character" class="absolute top-2 right-2" width="100" height="100">
             </div>
             <!-- Virtual Reality -->
-            <div class="bg-green-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <div class="bg-green-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Virtual Reality</p>
                 <img src="./assets/images/ballon girl.png" alt="Character" class="absolute top-2 right-2" width="150" height="150">
             </div>
-            <!-- Coloring Books-->
-            <div class="bg-gray-800 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <!-- Coloring Books -->
+            <div class="bg-gray-800 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Coloring books</p>
-                <img src="./assets/images/boy waving.png" alt="Character" class="absolute bottom-2 left-2" width="90" height="80">
+                <img src="./assets/images/boy waving.png" alt="Character" class="absolute bottom-2 left-2" width="80" height="70">
             </div>
             <!-- Cut-out Activities -->
-            <div class="bg-orange-700 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <div class="bg-orange-700 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Cut-out Activities</p>
-                <img src="./assets/images/cute elephant.png" alt="Character" class="absolute bottom-2 right-2" width="120" height="90">
+                <img src="./assets/images/cute elephant.png" alt="Character" class="absolute top-2 left-1" width="120" height="90">
             </div>
             <!-- Brain Games -->
-            <div class="bg-yellow-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <div class="bg-yellow-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Brain Games</p>
                 <img src="./assets/images/peace girl.png" alt="Character" class="absolute bottom-2 right-2" width="130" height="160">
             </div>
             <!-- More Coming Soon -->
-            <div class="bg-purple-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out">
+            <div class="bg-purple-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">More coming soon!!!</p>
-                <img src="./assets/images/Kidspark logo 2 (1).png" alt="Character" class="absolute top-2 right-2" width="100" height="100">
+                <img src="./assets/images/Kidspark logo 2 (1).png" alt="Character" class="absolute top-2 right-2" width="95" height="100">
             </div>
         </div>
     </div>
+
+    <!-- Popups -->
+    <div id="popup" class="popup bg-white">
+        <button onclick="closePopup()" class="text-black mb-4">Close</button>
+        <div id="popupContent" class="popup-content text-black">
+            <!-- Content will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="clickSound" src="click-sound.mp3" preload="auto"></audio>
+
+    <script>
+        function showPopup(element) {
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popupContent');
+            const bgColor = window.getComputedStyle(element).backgroundColor;
+            popup.style.backgroundColor = bgColor;
+            popupContent.innerHTML = `
+                <a href="#" class="text-black hover:underline">Link 1</a>
+                <a href="#" class="text-black hover:underline">Link 2</a>
+                <a href="#" class="text-black hover:underline">Link 3</a>
+            `;
+            popup.style.display = 'block';
+            playClickSound();
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
+        function playClickSound() {
+            const clickSound = document.getElementById('clickSound');
+            clickSound.play();
+        }
+    </script>
 </body>
 </html>
