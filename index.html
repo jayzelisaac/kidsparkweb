@@ -23,18 +23,92 @@
             display: none;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.541);
+            width: 75%;
+            height: 75%;
+            max-width: 50% !important;
         }
         .popup-content {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 50px;
         }
-    </style>
+        .popup-content h2 {
+            text-align: center;
+            float: left;
+            font-size: large;
+        }
+        .popup-content p {
+            text-align: center;
+        }
+        .popup-content ul {
+            list-style-type: none;
+            border: 1px solid #eee;
+            margin: 0;
+            padding: 0;
+            transition: 0.3s;
+        }
+        .popup-content ul:hover {
+            box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+        }
+        .popup-content li {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
+        }
+        .popup-content .header {
+            background-color: #111;
+            color: white;
+            font-size: 25px;
+        }
+        .popup-content .grey {
+            background-color: #eee;
+            font-size: 20px;
+        }   
+
+    .columns {
+        float: right;
+        width: 25%;
+        padding: 40px, 40px, 40px, 40px;
+    }
+
+    .price {
+        list-style-type: none;
+        border: 1px solid #eee;
+        margin: 0;
+        padding: 0;
+        transition: 0.3s;
+    }
+
+    .price:hover {
+        box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+    }
+
+    .price .header {
+        background-color: #111;
+        color: white;
+        font-size: 20px;
+    }
+
+    .price li {
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .price .grey {
+        background-color: #eee;
+        font-size: 20px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .columns {
+            width: 100%;
+        }
+    }
+</style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+<body class="bg-gray-600 flex items-center justify-center min-h-screen p-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full h-full">
         <!-- Logo Section -->
         <div class="flex flex-col items-center justify-center bg-gray-800 text-white p-8">
@@ -43,7 +117,7 @@
         <!-- Content Sections -->
         <div class="grid grid-cols-2 grid-rows-3 gap-4">
             <!-- Short Stories -->
-            <div class="bg-orange-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
+            <div class="bg-yellow-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Short stories</p>
                 <img src="./assets/images/benny the rabbit.png" alt="Character" class="absolute top-2 right-2" width="100" height="100">
             </div>
@@ -53,12 +127,12 @@
                 <img src="./assets/images/ballon girl.png" alt="Character" class="absolute top-2 right-2" width="150" height="150">
             </div>
             <!-- Coloring Books -->
-            <div class="bg-gray-800 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
+            <div class="bg-gray-500 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Coloring books</p>
                 <img src="./assets/images/boy waving.png" alt="Character" class="absolute bottom-2 left-2" width="80" height="70">
             </div>
             <!-- Cut-out Activities -->
-            <div class="bg-orange-700 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
+            <div class="bg-blue-900 flex items-center justify-center relative h-full hover-effect transition-transform duration-300 ease-in-out" onclick="showPopup(this)">
                 <p class="text-white text-2xl">Cut-out Activities</p>
                 <img src="./assets/images/cute elephant.png" alt="Character" class="absolute top-2 left-1" width="120" height="90">
             </div>
@@ -77,14 +151,13 @@
 
     <!-- Popups -->
     <div id="popup" class="popup bg-white">
-        <button onclick="closePopup()" class="text-black mb-4">Close</button>
         <div id="popupContent" class="popup-content text-black">
             <!-- Content will be dynamically added here -->
         </div>
     </div>
 
     <!-- Audio -->
-    <audio id="clickSound" src="click-sound.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="./assets/click-sound.mp3" preload="auto"></audio>
 
     <script>
         function showPopup(element) {
@@ -92,20 +165,45 @@
             const popupContent = document.getElementById('popupContent');
             const bgColor = window.getComputedStyle(element).backgroundColor;
             popup.style.backgroundColor = bgColor;
-            popupContent.innerHTML = `
-                <a href="#" class="text-black hover:underline">Link 1</a>
-                <a href="#" class="text-black hover:underline">Link 2</a>
-                <a href="#" class="text-black hover:underline">Link 3</a>
+            popupContent.innerHTML = 
+            ` <div>
+                <button onclick="closePopup()" class="text-black mb-4">Close</button>
+                <h2 style="text-align:center">See Whats included!</h2>
+    
+                <a>
+                <div class="columns">
+                    <ul class="price">
+                        <li class="header">Free</li>
+                        <li>2 Short Stories</li>
+                        <li>2 Coloring Pages</li>
+                        <li>1 Cut-out Kit</li>
+                        <li>3 Virtual Reality Scenes</li>
+                    </ul>
+                </div>
+                </a>
+                <a>
+                <div class="columns">
+                    <ul class="price">
+                        <li class="header" style="background-color:#04AA6D">Premium</li>
+                        <li>11 Short Stories</li>
+                        <li>20 Coloring Pages</li>
+                        <li>15 Cut-out Kits</li>
+                        <li>50 Virtual Reality Scenes</li>
+                    </ul>
+                </div>
+                </a>
+                </div>
             `;
+    
             popup.style.display = 'block';
             playClickSound();
         }
-
+    
         function closePopup() {
             const popup = document.getElementById('popup');
             popup.style.display = 'none';
         }
-
+    
         function playClickSound() {
             const clickSound = document.getElementById('clickSound');
             clickSound.play();
